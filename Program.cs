@@ -30,8 +30,9 @@ namespace Pince_a_croute
             //var FileFullPath = $"{DestinationFolderWriter}\\{FileNamePart + "_" + "BRUTE"}_{datetime}{FileExtension}";
             var FileFullPath = @"A:\ABI1\PC\detection.csv";
 
-
+            Console.WriteLine("Connexion a la BD en cours ...");
             database.connection(datetime, $"{DestinationFolderWriter}\\{FileNamePart + "_" + "BRUTE"}_{datetime}{FileExtension}");
+            Console.WriteLine("Lecture du fichier en cours ...");
             //reader.read(FileFullPath);
             reader.phase1(size:reader.read(FileFullPath),FileFullPath);
             //reader.phase2();

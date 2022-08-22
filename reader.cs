@@ -255,6 +255,7 @@ namespace Pince_a_croute
             writer.Close();
 
                 Console.WriteLine(k);
+            Console.ReadLine();
         }
 
 

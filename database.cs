@@ -42,11 +42,10 @@ ON A.Reader_uwb_id=D.reader_uwb_id
 INNER JOIN dbo.noovelia_kencee_balise as B
 ON B.Fonction='PINCE À CROUTE' and A.fonction='PINCE À CROUTE' WHERE  B.Location_ID=A.Location_ID    
 ORDER BY detection_id desc";
-            var SQLConnection = new SqlConnection
-            {
-                ConnectionString =
-                @"Data Source = ABI-MES-QA.APM.ALCOA.COM; Database =RFID_SURAL_2 ;Integrated Security=SSPI"
-            };
+            var SQLConnection = new SqlConnection();
+            SQLConnection.ConnectionString =
+                 @"Data Source = ABI-SMT-SQL-CL1.apm.alcoa.com; Database =SMART DFRM ;Integrated Security=SSPI";
+        
             
             
            
