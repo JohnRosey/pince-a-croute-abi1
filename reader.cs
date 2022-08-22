@@ -68,12 +68,12 @@ namespace Pince_a_croute
             int[][] Coup_De_Pinces; // tableau des coups de pince
 
             Database_Of_Detection = detection.RectangularArrays.RectangularStringArray(size, 8);
-
+            Console.WriteLine("ALGO EN COURS");
             using (var br = new StreamReader(FileFullPath))
             {
                 while (!ReferenceEquals(st = br.ReadLine(), null))
                 {
-                    mots = st.Split(';');
+                    mots = st.Split(',');
                     for (int i = 0; i < 7; i++) Database_Of_Detection[x][i] = mots[i];
 
                     x += 1;
@@ -154,7 +154,7 @@ namespace Pince_a_croute
                     tempo = double.Parse(Database_Of_Detection[distancetrie[i]][4], CultureInfo.InvariantCulture);
                     n = 1;
                 }
-            TextWriter wt = new StreamWriter(@"O:Temporaire/Ismael/Databse.txt");
+            TextWriter wt = new StreamWriter(@"O:/Temporaire/Ismael/Databse.txt");
             for (int i = 0; i < bd.Length; i++)
             {
                 wt.WriteLine(

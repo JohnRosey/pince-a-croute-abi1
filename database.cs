@@ -31,7 +31,7 @@ SELECT
       , D.[tag_id]
       , D.[tag_temperature]
       , D.[distance]
-      , D.[Emplacement]
+      , [Emplacement]
       , D.[insert_timestamp]
   
 FROM[dbo].[noovelia_kencee_detection] as D
@@ -42,6 +42,9 @@ ON A.Reader_uwb_id=D.reader_uwb_id
 INNER JOIN dbo.noovelia_kencee_balise as B
 ON B.Fonction='PINCE À CROUTE' and A.fonction='PINCE À CROUTE' WHERE  B.Location_ID=A.Location_ID    
 ORDER BY detection_id desc";
+            var SQLConnection3 = new SqlConnection();
+            SQLConnection3.ConnectionString =
+                 @"Data Source = .; Database =RFID_SURAL_2 ;Integrated Security=SSPI";
             var SQLConnection = new SqlConnection();
             SQLConnection.ConnectionString =
                  @"Data Source = ABI-SMT-SQL-CL1.apm.alcoa.com; Database =SMART DFRM ;Integrated Security=SSPI";
@@ -86,12 +89,13 @@ ORDER BY Emplacement ,detection_id desc";
 
                     StreamWriter sw = null;
                     sw = new StreamWriter(FileFullPath, false);
+                    Console.WriteLine("Ecriture du fichier CSV");
                     //// Write the Header Row to File
                     var ColumnCount = d_table.Columns.Count;
                     for (var ic = 0; ic < ColumnCount; ic++)
                     {
                         sw.Write(d_table.Columns[ic]);
-                        if (ic < ColumnCount - 1) sw.Write(';');
+                        if (ic < ColumnCount - 1) sw.Write(',');
                     }
 
                     WriteLine("50%");
@@ -103,7 +107,7 @@ ORDER BY Emplacement ,detection_id desc";
                         for (var ir = 0; ir < ColumnCount; ir++)
                         {
                             if (!Convert.IsDBNull(dr[ir])) sw.Write(dr[ir].ToString());
-                            if (ir < ColumnCount - 1) sw.Write(';');
+                            if (ir < ColumnCount - 1) sw.Write(',');
                         }
 
                         sw.Write(sw.NewLine);
@@ -116,11 +120,7 @@ ORDER BY Emplacement ,detection_id desc";
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                TextWriter wt = new StreamWriter(@"O:Temporaire/Ismael/Programclasserrors.txt");
-
-                wt.WriteLine(e.Message);
-
-                wt.Close();
+                
             }
         }
     }

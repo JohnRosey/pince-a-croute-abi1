@@ -18,7 +18,7 @@ namespace Pince_a_croute
 
         public detection(string rowData)
         {
-            string[] data = rowData.Split(';');
+            string[] data = rowData.Split(',');
             this.DetectionId = data[0];
             this.reader_uwb_id = data[1];
             this.tag_id = data[2];

@@ -29,8 +29,7 @@ namespace Pince_a_croute
 
             //var FileFullPath = $"{DestinationFolderWriter}\\{FileNamePart + "_" + "BRUTE"}_{datetime}{FileExtension}";
             var FileFullPath = @"A:\ABI1\PC\detection.csv";
-            try
-            {
+           
                 Console.WriteLine("Connexion a la BD en cours ...");
                 database.connection(datetime, $"{DestinationFolderWriter}\\{FileNamePart + "_" + "BRUTE"}_{datetime}{FileExtension}");
                 Console.WriteLine("Lecture du fichier en cours ...");
@@ -39,15 +38,7 @@ namespace Pince_a_croute
                 //reader.phase2();
                 Console.ReadLine();
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                TextWriter wt = new StreamWriter(@"O:Temporaire/Ismael/Programclasserrors.txt");
-
-                wt.WriteLine(e.Message);
-                        
-                wt.Close();
-            }
+            
         }
     }
-}
+
