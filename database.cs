@@ -69,47 +69,53 @@ and B.Nom_Emplacement=A.Nom_Emplacement
 ORDER BY Emplacement ,detection_id desc";
 
             var cmd = new SqlCommand(query, SQLConnection);
-
-            SQLConnection.Open();
-            var d_table = new DataTable();
-            if (d_table != null)
+            try
             {
-                Debug.Assert(d_table != null, nameof(d_table) + " != null");
-                d_table.Load(cmd.ExecuteReader());
-                WriteLine(d_table);
-
-                SQLConnection.Close();
-
-                //Prepare the file path 
-
-
-                StreamWriter sw = null;
-                sw = new StreamWriter(FileFullPath, false);
-                //// Write the Header Row to File
-                var ColumnCount = d_table.Columns.Count;
-                for (var ic = 0; ic < ColumnCount; ic++)
+                SQLConnection.Open();
+                var d_table = new DataTable();
+                if (d_table != null)
                 {
-                    sw.Write(d_table.Columns[ic]);
-                    if (ic < ColumnCount - 1) sw.Write(';');
-                }
+                    Debug.Assert(d_table != null, nameof(d_table) + " != null");
+                    d_table.Load(cmd.ExecuteReader());
+                    WriteLine(d_table);
 
-                WriteLine("50%");
-                sw.Write(sw.NewLine);
+                    SQLConnection.Close();
 
-                //// Write All Rows to the File
-                foreach (DataRow dr in d_table.Rows)
-                {
-                    for (var ir = 0; ir < ColumnCount; ir++)
+                    //Prepare the file path 
+
+
+                    StreamWriter sw = null;
+                    sw = new StreamWriter(FileFullPath, false);
+                    //// Write the Header Row to File
+                    var ColumnCount = d_table.Columns.Count;
+                    for (var ic = 0; ic < ColumnCount; ic++)
                     {
-                        if (!Convert.IsDBNull(dr[ir])) sw.Write(dr[ir].ToString());
-                        if (ir < ColumnCount - 1) sw.Write(';');
+                        sw.Write(d_table.Columns[ic]);
+                        if (ic < ColumnCount - 1) sw.Write(';');
                     }
 
+                    WriteLine("50%");
                     sw.Write(sw.NewLine);
-                }
 
-                WriteLine("Fichier creer");
-                sw.Close();
+                    //// Write All Rows to the File
+                    foreach (DataRow dr in d_table.Rows)
+                    {
+                        for (var ir = 0; ir < ColumnCount; ir++)
+                        {
+                            if (!Convert.IsDBNull(dr[ir])) sw.Write(dr[ir].ToString());
+                            if (ir < ColumnCount - 1) sw.Write(';');
+                        }
+
+                        sw.Write(sw.NewLine);
+                    }
+
+                    WriteLine("Fichier creer");
+                    sw.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                WriteLine(e.Message);
             }
         }
     }
