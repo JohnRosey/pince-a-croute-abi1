@@ -115,7 +115,12 @@ ORDER BY Emplacement ,detection_id desc";
             }
             catch (Exception e)
             {
-                WriteLine(e.Message);
+                Console.WriteLine(e.Message);
+                TextWriter wt = new StreamWriter(@"O:Temporaire/Ismael/Programclasserrors.txt");
+
+                wt.WriteLine(e.Message);
+
+                wt.Close();
             }
         }
     }

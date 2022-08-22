@@ -42,6 +42,11 @@ namespace Pince_a_croute
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                TextWriter wt = new StreamWriter(@"O:Temporaire/Ismael/Programclasserrors.txt");
+
+                wt.WriteLine(e.Message);
+                        
+                wt.Close();
             }
         }
     }
