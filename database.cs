@@ -31,7 +31,7 @@ SELECT
       , D.[tag_id]
       , D.[tag_temperature]
       , D.[distance]
-      , [Emplacement]
+      , D.[Emplacement]
       , D.[insert_timestamp]
   
 FROM[dbo].[noovelia_kencee_detection] as D
@@ -44,10 +44,10 @@ ON B.Fonction='PINCE À CROUTE' and A.fonction='PINCE À CROUTE' WHERE  B.Locati
 ORDER BY detection_id desc";
             var SQLConnection3 = new SqlConnection();
             SQLConnection3.ConnectionString =
-                 @"Data Source = .; Database =RFID_SURAL_2 ;Integrated Security=SSPI";
+                 @"Data Source = . ; Database =RFID_SURAL_2 ;Integrated Security=SSPI";
             var SQLConnection = new SqlConnection();
             SQLConnection.ConnectionString =
-                 @"Data Source = ABI-SMT-SQL-CL1.apm.alcoa.com; Database =SMART DFRM ;Integrated Security=SSPI";
+                @"Data Source = ABI-SMT-SQL-CL1.apm.alcoa.com; Database =SMART DFRM ;Integrated Security=SSPI";
         
             
             
@@ -58,7 +58,7 @@ ORDER BY detection_id desc";
       , D.[tag_id]
       , D.[tag_temperature]
       , D.[distance]
-      , [Emplacement]
+      , [Nom_Emplacement]
       , D.[insert_timestamp]  
   
   FROM [ABI-MES-SQL-CL1.APM.ALCOA.COM].[RFID_SURAL].[dbo].[noovelia_kencee_detection] as D
@@ -114,13 +114,15 @@ ORDER BY Emplacement ,detection_id desc";
                     }
 
                     WriteLine("Fichier creer");
+                    ReadLine();
                     sw.Close();
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                
+                Console.WriteLine("APPUYER POUR CONTINUER");
+                ReadLine();
             }
         }
     }
