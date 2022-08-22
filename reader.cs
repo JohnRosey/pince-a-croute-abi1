@@ -27,6 +27,7 @@ namespace Pince_a_croute
 
         public static int read(string FileFullPath)
         {
+            Console.WriteLine("PREMIERE PHASE : ");
             string[] csvLines = System.IO.File.ReadAllLines(FileFullPath);
             int size = csvLines.Length;
             // Students
@@ -39,6 +40,7 @@ namespace Pince_a_croute
                     detection st = new detection(csvLines[i]);
                     detection.Add(st);
                 }
+
 
                 //for (int i = 0; i < detection.Count; i++)
                 //{
@@ -81,7 +83,7 @@ namespace Pince_a_croute
                 {
                     while (!ReferenceEquals(st = br.ReadLine(), null))
                     {
-                        mots = st.Split(',');
+                        mots = st.Split(';');
                         for (int i = 0; i < 7; i++) Database_Of_Detection[x][i] = mots[i];
 
                         x += 1;
@@ -107,7 +109,8 @@ namespace Pince_a_croute
 
                 string[][] cp; // tableau final
 
-                for (int i = 1; i < (size); i++)
+                for (
+                    int i = 1; i < (size); i++)
                 {
                     double extremite1 = double.Parse(Database_Of_Detection[i][4], CultureInfo.InvariantCulture);
                     double extremite2 = double.Parse(Database_Of_Detection[i][4], CultureInfo.InvariantCulture);
@@ -120,7 +123,7 @@ namespace Pince_a_croute
 
                 }
                 Console.WriteLine("LE NOUVEAUX NOMBRE DE LIGNES EST DE :" + m);
-                Console.WriteLine(distancetrie[78]);
+               // Console.WriteLine(distancetrie[78]);
                 bd = detection.RectangularArrays.RectangularIntArray(m, 8);
                 cp = detection.RectangularArrays.RectangularStringArray(bd.Length, 8);
                 Console.WriteLine("La longeur est de : " + bd.Length);
@@ -129,6 +132,7 @@ namespace Pince_a_croute
                 int k = 0; // variable pour placer la ligne dans le tableau bd
                 int n = 0; // variable du nombre de point consecutif
                 double? tempo = 0.0;
+                Console.WriteLine("Comparaison");
 
                 tempo = double.Parse(Database_Of_Detection[distancetrie[0]][4], CultureInfo.InvariantCulture);
 
@@ -210,6 +214,8 @@ namespace Pince_a_croute
                         }
 
                 //DERNIERE PHASE 
+                Console.WriteLine("DERNIERE PHASE : ");
+
                 var DestinationFolderReader = @"O:\Temporaire\Olivier Fortin\Fichier lecture csv";
                 var datetime = DateTime.Now.ToString("yyyyMMdd");
                 var FileExtension = ".csv"; //Provide the extension you like such as .txt or .csv
