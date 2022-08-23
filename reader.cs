@@ -216,8 +216,8 @@ namespace Pince_a_croute
                 //DERNIERE PHASE 
                 Console.WriteLine("DERNIERE PHASE : ");
 
-                var DestinationFolderReader = @"O:\Temporaire\Olivier Fortin\Fichier lecture csv";
-                var datetime = DateTime.Now.ToString("yyyyMMdd");
+                var DestinationFolderReader = @"A:\Temporaire\Olivier Fortin\Fichier lecture csv";
+                var datetime = DateTime.Now.ToString("yyyyMMddMM");
                 var FileExtension = ".csv"; //Provide the extension you like such as .txt or .csv
 
                 var FileNamePart = "Detection"; //Datetime will be added to it
