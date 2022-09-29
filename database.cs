@@ -178,9 +178,7 @@ ON A.Reader_uwb_id=D.reader_uwb_id
 INNER JOIN [ABI-MES-QA.APM.ALCOA.COM].[RFID_SURAL_2].dbo.noovelia_kencee_balise as B
 ON B.Fonction='PINCE À CROUTE' and A.fonction='PINCE À CROUTE' and ( [insert_timestamp] BETWEEN '2022-07-12' and '2022-07-14' ) 
 ORDER BY detection_id asc";
-            var SQLConnection3 = new SqlConnection();
-            SQLConnection3.ConnectionString =
-                 @"Data Source = . ; Database =RFID_SURAL_2 ;Integrated Security=SSPI";
+           
             var SQLConnection = new SqlConnection();
             SQLConnection.ConnectionString =
                 @"Data Source = ABI-SMT-SQL-CL1.apm.alcoa.com; Database =SMART DFRM ;Integrated Security=SSPI";
@@ -214,7 +212,7 @@ ORDER BY Emplacement ,detection_id desc";
             var cmd = new SqlCommand(query3, SQLConnection);
             try
             {
-                SQLConnection3.Open();
+                SQLConnection.Open();
                 var d_table = new DataTable();
                 if (d_table != null)
                 {
@@ -222,7 +220,7 @@ ORDER BY Emplacement ,detection_id desc";
                     d_table.Load(cmd.ExecuteReader());
                     WriteLine(d_table);
 
-                    SQLConnection3.Close();
+                    SQLConnection.Close();
 
                     //Prepare the file path 
 
