@@ -21,15 +21,15 @@ namespace Pince_a_croute
             //Declare Variables and provide values
             var FileNamePart = "Detection"; //Datetime will be added to it
             var DestinationFolderWriter = @"O:\Temporaire\Olivier Fortin\Fichier ecriture csv";
-            //var DestinationFolderReader = @"O:\Temporaire\Olivier Fortin\Fichier lecture csv";
+            var DestinationFolderReader = @"O:\Temporaire\Olivier Fortin\Fichier lecture csv";
 
             var FileDelimiter = ";"; //You can provide comma or pipe or whatever you like
             var FileExtension = ".csv"; //Provide the extension you like such as .txt or .csv
 
             var datetime = DateTime.Now.ToString("yyyyMMddMM");
 
-            //var FileFullPath = $"{DestinationFolderWriter}\\{FileNamePart + "_" + "BRUTE"}_{datetime}{FileExtension}";
-            var FileFullPath = @"A:\ABI1\PC\detection.csv";
+            var FileFullPath = $"{DestinationFolderWriter}\\{FileNamePart + "_" + "BRUTE"}_{datetime}{FileExtension}";
+            //var FileFullPath = @"A:\ABI1\PC\detection.csv";
 
             Console.WriteLine("Faites un choix entre  1 et 2:");
             Console.WriteLine("* 1 pour les dectections des dernieres 24 heures a partir de 8 H ");
