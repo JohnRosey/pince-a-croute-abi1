@@ -28,8 +28,8 @@ namespace Pince_a_croute
 
             var datetime = DateTime.Now.ToString("yyyyMMddMM");
 
-            var FileFullPath = $"{DestinationFolderWriter}\\{FileNamePart + "_" + "BRUTE"}_{datetime}{FileExtension}";
-            //var FileFullPath = @"A:\ABI1\PC\detection.csv";
+            //var FileFullPath = $"{DestinationFolderWriter}\\{FileNamePart + "_" + "BRUTE"}_{datetime}{FileExtension}";
+            var FileFullPath = @"A:\ABI1\PC\detection.csv";
 
             Console.WriteLine("Faites un choix entre  1 et 2:");
             Console.WriteLine("* 1 pour les dectections des dernieres 24 heures a partir de 8 H ");
@@ -38,8 +38,9 @@ namespace Pince_a_croute
             switch (number)
                 { 
                     case 1:
-                        Console.WriteLine("Connexion a la BD en cours ...");
-                        database.connection(datetime, $"{DestinationFolderWriter}\\{FileNamePart + "_" + "BRUTE"}_{datetime}{FileExtension}");
+                    Console.WriteLine("* 1 pour les dectections des dernieres 24 heures a partir de 8 H ");
+                    Console.WriteLine("Connexion a la BD en cours ...");
+                        //database.connection(datetime, $"{DestinationFolderWriter}\\{FileNamePart + "_" + "BRUTE"}_{datetime}{FileExtension}");
                         Console.WriteLine("Lecture du fichier en cours ...");
                         //
                         //reader.read(FileFullPath);
