@@ -211,7 +211,7 @@ and B.Nom_Emplacement=A.Nom_Emplacement    WHERE (D.[insert_timestamp] >= @yeste
 
 ORDER BY Emplacement ,detection_id desc";
 
-            var cmd = new SqlCommand(query3, SQLConnection3);
+            var cmd = new SqlCommand(query3, SQLConnection);
             try
             {
                 SQLConnection3.Open();
