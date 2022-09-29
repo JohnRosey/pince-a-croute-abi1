@@ -243,7 +243,7 @@ namespace Pince_a_croute
 
                             //System.out.print(j);
                             //System.out.print(" - ");
-                            writer.Write(cp[j][0] + "---" + numero_anodes[i][1]);
+                            writer.Write(cp[j][0] + "-" + numero_anodes[i][1]);
                             writer.Write(";");
 
                             cp[j][1] = Database_Of_Detection[Coup_De_Pinces[j][0] - 1][5];//Emplacement 

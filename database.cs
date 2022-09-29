@@ -158,23 +158,26 @@ ORDER BY Emplacement ,detection_id desc ";
             //};
 
             var query3 = @"
-SELECT 
-        D.[detection_id]
+ DECLARE @yesterday DATETIME
+    = DATEADD(DAY, -1, CAST(GETDATE() AS DATE));
+DECLARE @today DATETIME = CAST(GETDATE() AS DATE);
+
+SELECT  D.[detection_id]
       , D.[reader_uwb_id]
       , D.[tag_id]
       , D.[tag_temperature]
       , D.[distance]
-      , D.[Emplacement]
-      , D.[insert_timestamp]
+      , Emplacement
+      , D.[insert_timestamp]  
   
-FROM[dbo].[noovelia_kencee_detection] as D
-  
-INNER JOIN dbo.noovelia_kencee_antenne as A
+	 
+FROM [ABI-MES-SQL-CL1.APM.ALCOA.COM].[RFID_SURAL].[dbo].[noovelia_kencee_detection] as D
+INNER JOIN [ABI-MES-QA.APM.ALCOA.COM].[RFID_SURAL_2].dbo.noovelia_kencee_antenne as A
 ON A.Reader_uwb_id=D.reader_uwb_id 
 
-INNER JOIN dbo.noovelia_kencee_balise as B
-ON B.Fonction='PINCE À CROUTE' and A.fonction='PINCE À CROUTE' WHERE  B.Location_ID=A.Location_ID  and ( [insert_timestamp] BETWEEN '2022-07-12' and '2022-07-14' ) 
-ORDER BY detection_id desc";
+INNER JOIN [ABI-MES-QA.APM.ALCOA.COM].[RFID_SURAL_2].dbo.noovelia_kencee_balise as B
+ON B.Fonction='PINCE À CROUTE' and A.fonction='PINCE À CROUTE' and ( [insert_timestamp] BETWEEN '2022-07-12' and '2022-07-14' ) 
+ORDER BY detection_id asc";
             var SQLConnection3 = new SqlConnection();
             SQLConnection3.ConnectionString =
                  @"Data Source = . ; Database =RFID_SURAL_2 ;Integrated Security=SSPI";
