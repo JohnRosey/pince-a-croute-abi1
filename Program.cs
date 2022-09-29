@@ -40,7 +40,7 @@ namespace Pince_a_croute
                     case 1:
                     Console.WriteLine("* 1 pour les dectections des dernieres 24 heures a partir de 8 H ");
                     Console.WriteLine("Connexion a la BD en cours ...");
-                        //database.connection(datetime, $"{DestinationFolderWriter}\\{FileNamePart + "_" + "BRUTE"}_{datetime}{FileExtension}");
+                        database.connection(datetime, $"{DestinationFolderWriter}\\{FileNamePart + "_" + "BRUTE"}_{datetime}{FileExtension}");
                         Console.WriteLine("Lecture du fichier en cours ...");
                         //
                         //reader.read(FileFullPath);
